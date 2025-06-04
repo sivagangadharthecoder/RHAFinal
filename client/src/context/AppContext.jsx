@@ -3,68 +3,109 @@ import axios from "axios";
 
 const AppContent = createContext();
 
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+  }
+});
+
 const AppContextProvider = (props) => {
-  const backendUrl = import.meta.env.VITE_API_URL;
-  const [isLoggedin, setIsLoggedin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  // Fetch user data
   const getUserData = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/user/data`, {
-        withCredentials: true
-      });
-
-      if (res.data.success) {
-        setUserData(res.data.userData);
-        setIsLoggedin(true);
+      setLoading(true);
+      setError(null);
+      
+      const response = await api.get('/api/user/data');
+      
+      if (response.data.success) {
+        setUserData(response.data.userData);
+        setIsLoggedIn(true);
       } else {
-        console.log('Server Response:', res.data.message);
-        setIsLoggedin(false);
-        setUserData(null);
+        handleLogout();
       }
     } catch (error) {
-      console.error("Failed To Fetch User Data:", {
-        message: error.message,
-        response: error.response?.data
-      });
-      setIsLoggedin(false);
-      setUserData(null);
-    }
-  };
-
-  const getAuthState = async () => {
-    try {
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/auth/is-auth`, {
-        withCredentials: true
-      });
-      if (data.success) {
-        await getUserData();
-      } else {
-        setIsLoggedin(false);
-        setUserData(null);
-      }
-    } catch (error) {
-      setIsLoggedin(false);
-      setUserData(null);
-      console.error("Auth Check Failed:", error.message);
+      handleApiError(error, 'Failed to fetch user data');
+      handleLogout();
     } finally {
       setLoading(false);
     }
   };
 
+  const getAuthState = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get('/api/auth/is-auth');
+      
+      if (response.data.success) {
+        await getUserData();
+      } else {
+        handleLogout();
+      }
+    } catch (error) {
+      handleApiError(error, 'Authentication check failed');
+      handleLogout();
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle logout
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserData(null);
+    
+  };
+
+  const handleApiError = (error, defaultMessage) => {
+    const errorMessage = error.response?.data?.message || 
+                        error.message || 
+                        defaultMessage;
+    
+    setError(errorMessage);
+    console.error('API Error:', {
+      message: errorMessage,
+      response: error.response?.data,
+      stack: error.stack
+    });
+  };
+
+  // Initialize auth state
   useEffect(() => {
     getAuthState();
+    
+    const responseInterceptor = api.interceptors.response.use(
+      response => response,
+      error => {
+        if (error.response?.status === 401) {
+          handleLogout();
+        }
+        return Promise.reject(error);
+      }
+    );
+
+    return () => {
+      api.interceptors.response.eject(responseInterceptor);
+    };
   }, []);
 
   const value = {
-    backendUrl,
-    isLoggedin,
-    setIsLoggedin,
+    api, 
+    isLoggedIn,
     userData,
-    setUserData,
+    loading,
+    error,
+    setError,
     getUserData,
-    loading
+    handleLogout,
+    refreshAuth: getAuthState 
   };
 
   return (
