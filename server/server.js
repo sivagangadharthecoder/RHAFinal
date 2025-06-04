@@ -24,7 +24,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 connectDB();
 
-const allowedOrigins = ['https://rhff.onrender.com']
+const allowedOrigins = ['https://rhff.onrender.com', 'https://rhf-drgg.onrender.com']
 
 app.use(express.json());
 app.use(cookieParser());
