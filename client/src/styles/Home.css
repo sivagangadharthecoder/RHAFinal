@@ -45,7 +45,7 @@ p {
   display: flex;
   align-items: center;
   background: linear-gradient(to top right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), 
-              url('bg_home.jpg') no-repeat center center;
+              url('home.jpg') no-repeat center center;
   background-size: cover;
   padding: 0 5%;
   position: relative;
