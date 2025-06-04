@@ -1,6 +1,7 @@
 const getUserData = async (req, res) => {
   try {
-    const user = req.user;
+    const user = await User.findById(req.user._id)
+      .select('-password -__v -createdAt -updatedAt');
 
     if (!user) {
       return res.status(404).json({
@@ -23,9 +24,7 @@ const getUserData = async (req, res) => {
     console.error('Error in getUserData:', err);
     return res.status(500).json({
       success: false,
-      message: err.message
+      message: 'Server error while fetching user data'
     });
   }
 };
-
-export default getUserData;
