@@ -1,0 +1,665 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap');
+
+.zara-portal {
+  color: #333;
+  background-color: #fff;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+p {
+  font-weight: 300;
+  line-height: 1.6;
+  color: #666;
+}
+
+
+.zara-hero {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to top right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), 
+              url('bg_home.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 0 5%;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.hero-content {
+  max-width: 600px;
+  z-index: 2;
+  color: white;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.hero-line {
+  width: 60px;
+  height: 2px;
+  background-color: white;
+  margin: 1.5rem 0;
+}
+
+.hero-description {
+  font-size: 1rem;
+  max-width: 80%;
+  color: white;
+}
+
+
+.section-header {
+  padding: 4rem 5% 2rem;
+  text-align: center;
+  margin: 0 5%;
+}
+
+.section-header p {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+
+.services-section {
+  background-color: #f9f9f9;
+  padding-bottom: 4rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 0 5%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background-color: #fff;
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  text-align: center;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .card-icon {
+  transform: scale(1.1);
+}
+
+.service-card h3 {
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 2;
+  color: #333;
+}
+
+.service-card p {
+  position: relative;
+  z-index: 2;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.card-hover-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--hover-color);
+  transition: height 0.3s ease;
+  z-index: 1;
+}
+
+.service-card:hover .card-hover-indicator {
+  height: 4px;
+}
+
+.process-section {
+  background-color: #fff;
+  padding-bottom: 4rem;
+}
+
+.process-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  margin: 2rem auto 0;
+  padding: 0 5%;
+}
+
+.process-node {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: 1.2rem 0;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.process-node.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.node-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-right: 1.2rem;
+  position: relative;
+  z-index: 2;
+  font-size: 0.9rem;
+}
+
+.node-content {
+  padding-top: 0.3rem;
+}
+
+.node-content h4 {
+  margin-bottom: 0.4rem;
+  font-weight: 400;
+  color: #333;
+}
+
+.node-content p {
+  color: #777;
+  font-size: 0.85rem;
+}
+
+.process-connector {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 25px;
+  opacity: 0;
+  transition: all 0.4s ease-out;
+}
+
+.process-connector.animate-in {
+  opacity: 1;
+}
+
+.connector-line {
+  width: 1px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.connector-arrow {
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  transform: rotate(45deg);
+  position: absolute;
+  bottom: 0;
+}
+
+
+.cta-section {
+  background-color: #f9f9f9;
+  padding: 3rem 5%;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.cta-content {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+}
+
+.zara-button {
+  background: none;
+  border: 1px solid #333;
+  color: #333;
+  padding: 0.8rem 1.8rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.zara-button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.button-icon {
+  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+}
+
+.zara-button:hover .button-icon {
+  transform: translateX(3px);
+}
+
+
+.process-node.first.animate-in {
+  transition-delay: 0.1s;
+}
+
+.process-node:nth-child(4).animate-in {
+  transition-delay: 0.3s;
+}
+
+.process-node:nth-child(6).animate-in {
+  transition-delay: 0.5s;
+}
+
+.process-node.last.animate-in {
+  transition-delay: 0.7s;
+}
+
+.process-connector:nth-child(2).animate-in {
+  transition-delay: 0.2s;
+}
+
+.process-connector:nth-child(4).animate-in {
+  transition-delay: 0.4s;
+}
+
+.process-connector:nth-child(6).animate-in {
+  transition-delay: 0.6s;
+}
+
+
+@media (max-width: 768px) {
+  .zara-hero {
+    height: 60vh;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+  }
+  
+  .hero-description {
+    max-width: 100%;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .service-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .process-node {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  
+  .node-circle {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+  
+  .process-connector {
+    height: 20px;
+  }
+  
+  .cta-content {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .zara-hero {
+    height: 50vh;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+  
+  .node-circle {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .node-content h4 {
+    font-size: 1rem;
+  }
+  
+  .node-content p {
+    font-size: 0.8rem;
+  }
+  
+  .zara-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  
+}
+
+@media screen and (max-width : 321px) {
+  .section-header h2{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zara-hero {
+    height: 45vh;
+    padding: 0 3%;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.8rem;
+  }
+  
+  .hero-line {
+    width: 40px;
+    margin: 1rem 0;
+  }
+  
+  .hero-description {
+    font-size: 0.85rem;
+  }
+  
+  .section-header {
+    padding: 2.5rem 3% 1.5rem;
+  }
+  
+  .section-header p {
+    font-size: 0.7rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 3%;
+  }
+  
+  .service-card {
+    padding: 1.2rem 1rem;
+  }
+  
+  .card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .process-map {
+    padding: 0 3%;
+  }
+  
+  .process-node {
+    padding: 0.8rem 0;
+  }
+  
+  .node-circle {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+  
+  .node-content h4 {
+    font-size: 0.95rem;
+  }
+  
+  .node-content p {
+    font-size: 0.75rem;
+  }
+  
+  .cta-content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .zara-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .zara-hero {
+    height: 40vh;
+  }
+  
+  h1 {
+    font-size: 1.3rem;
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.75rem;
+  }
+  
+  .hero-description {
+    font-size: 0.8rem;
+  }
+  
+  .section-header {
+    padding: 2rem 3% 1rem;
+  }
+  
+  .section-header h2 {
+    font-size: 1.1rem;
+  }
+  
+  .section-header p {
+    font-size: 0.65rem;
+  }
+  
+  .service-card {
+    padding: 1rem 0.8rem;
+  }
+  
+  .card-icon {
+    font-size: 1.3rem;
+  }
+  
+  .service-card h3 {
+    font-size: 1rem;
+  }
+  
+  .service-card p {
+    font-size: 0.8rem;
+  }
+  
+  .process-node {
+    padding: 0.6rem 0;
+  }
+  
+  .node-circle {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .node-content h4 {
+    font-size: 0.9rem;
+  }
+  
+  .zara-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .zara-hero,
+  .section-header,
+  .services-section,
+  .process-section,
+  .cta-section {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+
+  .hero-content {
+    width: 90%;
+    max-width: none;
+  }
+
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.2rem;
+  }
+
+
+  .process-map {
+    max-width: 280px;
+  }
+
+  .process-node {
+    width: 100%;
+  }
+
+
+  .cta-content {
+    width: 90%;
+    max-width: 280px;
+    padding: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+
+  .services-grid,
+  .process-map,
+  .cta-content {
+    max-width: 260px;
+  }
+
+
+  .service-card {
+    padding: 1rem 0.8rem;
+  }
+
+
+  .node-content {
+    width: calc(100% - 40px); 
+  }
+
+  .cta-content {
+    padding: 1.2rem 0.8rem;
+  }
+
+  .zara-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

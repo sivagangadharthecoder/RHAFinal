@@ -1,0 +1,381 @@
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.profile-loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.profile-empty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.profile-empty-card {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profile-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 800px;
+  border: none;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-avatar {
+  background-color: #f5f5f5;
+  margin-bottom: 1.5rem;
+}
+
+.profile-title-container {
+  text-align: center;
+}
+
+.profile-title {
+  margin: 0;
+  font-weight: 500;
+}
+
+.profile-edit-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.profile-edit-input {
+  max-width: 300px;
+}
+
+.profile-edit-button {
+  color: #666;
+}
+
+.profile-edit-button:hover {
+  color: #222;
+}
+
+.profile-details {
+  padding: 0 2rem 2rem;
+}
+
+.profile-detail-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.profile-detail-icon {
+  margin-right: 1rem;
+  color: #666;
+  font-size: 16px;
+  min-width: 20px;
+}
+
+.profile-detail-label {
+  margin-right: 0.5rem;
+  min-width: 120px;
+  color: #666;
+  font-weight: 500;
+}
+
+.profile-detail-value {
+  color: #222;
+  word-break: break-word;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.change-username-button {
+  padding: 0 2rem;
+  height: 40px;
+}
+
+.change-username-button {
+  background-color: white !important;
+  color: black !important;
+  border: 2px solid black !important;
+}
+
+.change-username-button:hover {
+  background-color: black !important;
+  color: white !important;
+  border-color: black !important;
+}
+
+@media (max-width: 768px) {
+  .profile-wrapper {
+    padding: 1.5rem;
+  }
+  
+  .profile-detail-item {
+    flex-wrap: wrap;
+  }
+  
+  .profile-detail-label {
+    min-width: 100px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .profile-detail-value {
+    width: 100%;
+    padding-left: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-wrapper {
+    padding: 1rem;
+    min-height: 85vh;
+  }
+  
+  .profile-header {
+    padding: 1.5rem 0;
+  }
+  
+  .profile-details {
+    padding: 0 1rem 1.5rem;
+  }
+  
+  .profile-detail-item {
+    padding: 0.75rem 0;
+  }
+  
+  .profile-detail-label {
+    min-width: 80px;
+    font-size: 14px;
+  }
+  
+  .profile-detail-value {
+    padding-left: 1.5rem;
+    font-size: 14px;
+  }
+  
+  .profile-edit-input {
+    max-width: 200px;
+  }
+  
+  .change-username-button {
+    padding: 0 1.5rem;
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .profile-wrapper {
+    padding: 0.75rem;
+  }
+  
+  .profile-header {
+    padding: 1rem 0;
+  }
+  
+  .profile-details {
+    padding: 0 0.75rem 1rem;
+  }
+  
+  .profile-detail-item {
+    padding: 0.5rem 0;
+  }
+  
+  .profile-detail-label {
+    min-width: 70px;
+    font-size: 13px;
+    margin-right: 0.25rem;
+  }
+  
+  .profile-detail-value {
+    padding-left: 1rem;
+    font-size: 13px;
+  }
+  
+  .profile-detail-icon {
+    margin-right: 0.75rem;
+    font-size: 14px;
+  }
+  
+  .profile-edit-input {
+    max-width: 160px;
+    font-size: 14px;
+  }
+  
+  .profile-title {
+    font-size: 18px !important;
+  }
+  
+  .change-username-button {
+    padding: 0 1rem;
+    height: 32px;
+    font-size: 13px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .profile-wrapper {
+    padding: 1.5rem;
+  }
+  
+  .profile-detail-item {
+    flex-wrap: wrap;
+  }
+  
+  .profile-detail-label {
+    min-width: 100px;
+    margin-bottom: 0.5rem;
+    font-size: 13px; 
+  }
+  
+  .profile-detail-value {
+    width: 100%;
+    padding-left: 2rem;
+    font-size: 13px;
+  }
+
+  .profile-title {
+    font-size: 18px !important; 
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-wrapper {
+    padding: 1rem;
+    min-height: 85vh;
+  }
+  
+  .profile-header {
+    padding: 1.2rem 0; 
+  }
+  
+  .profile-details {
+    padding: 0 1rem 1.2rem; 
+  }
+  
+  .profile-detail-item {
+    padding: 0.6rem 0; 
+  }
+  
+  .profile-detail-label {
+    min-width: 75px; 
+    font-size: 12px; 
+  }
+  
+  .profile-detail-value {
+    padding-left: 1.2rem; 
+    font-size: 12px; 
+  }
+  
+  .profile-detail-icon {
+    font-size: 14px; 
+  }
+  
+  .profile-edit-input {
+    max-width: 180px; 
+    font-size: 13px; 
+  }
+  
+  .profile-title {
+    font-size: 16px !important; 
+  }
+  
+  .change-username-button {
+    padding: 0 1.2rem; 
+    height: 34px; 
+    font-size: 13px; 
+  }
+}
+
+@media (max-width: 320px) {
+  .profile-wrapper {
+    padding: 0.5rem; 
+  }
+  
+  .profile-header {
+    padding: 0.3rem 0; 
+  }
+  
+  .profile-details {
+    padding: 0 0.5rem 0.8rem; 
+  }
+  
+  .profile-detail-item {
+    padding: 0.4rem 0; 
+  }
+  
+  .profile-detail-label {
+    min-width: 65px; 
+    font-size: 11px; 
+  }
+  
+  .profile-detail-value {
+    padding-left: 0.8rem; 
+    font-size: 10px; 
+  }
+
+  .profile-detail-value2 {
+    padding-left: 0.8rem; 
+    font-size: 8.8px; 
+  }
+  
+  .profile-detail-icon {
+    margin-right: 0.5rem; 
+    font-size: 12px; 
+    min-width: 16px; 
+  }
+  
+  .profile-edit-input {
+    max-width: 140px; 
+    font-size: 12px; 
+    height: 32px; 
+  }
+  
+  .profile-title {
+    font-size: 15px !important; 
+  }
+  
+  .profile-edit-button {
+    font-size: 12px; 
+  }
+  
+  .change-username-button {
+    padding: 0 0.8rem; 
+    height: 30px; 
+    font-size: 12px; 
+  }
+}

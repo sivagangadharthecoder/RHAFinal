@@ -1,0 +1,174 @@
+.zara-footer {
+  background-color: #fff;
+  color: #333;
+  padding: 20px 0 10px;
+  font-family: 'Montserrat', sans-serif;
+  border-top: 1px solid #f0f0f0;
+  font-size: 12px; 
+}
+
+.footer-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.footer-title {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.student-card {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 2px;
+  text-align: center;
+  transition: all 0.2s ease;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.01);
+}
+
+.student-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.student-avatar {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.student-card h3 {
+  margin: 5px 0 3px;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.student-role {
+  color: #888;
+  font-style: italic;
+  margin-bottom: 5px;
+  font-size: 0.7rem;
+}
+
+.student-info p {
+  margin: 4px 0;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #666;
+}
+
+.social-links {
+  text-align: center;
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  color: #666;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  padding: 5px;
+}
+
+.social-links a:hover {
+  color: #000;
+  transform: scale(1.05);
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0;
+  font-size: 0.65rem;
+  color: #888;
+}
+
+@media (min-width: 481px) {
+  .zara-footer {
+    padding: 25px 0 15px;
+    font-size: 13px;
+  }
+  
+  .footer-title {
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+  }
+  
+  .student-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .student-card {
+    padding: 12px;
+  }
+  
+  .student-avatar {
+    font-size: 1.3rem;
+  }
+  
+  .student-card h3 {
+    font-size: 0.95rem;
+  }
+  
+  .student-info p {
+    font-size: 0.75rem;
+  }
+  
+  .social-links {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .zara-footer {
+    padding: 15px 0 8px;
+    font-size: 11px;
+  }
+  
+  .footer-title {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+  
+  .student-avatar {
+    font-size: 1.1rem;
+  }
+  
+  .student-card h3 {
+    font-size: 0.85rem;
+  }
+  
+  .student-info p {
+    font-size: 0.65rem;
+    gap: 3px;
+  }
+  
+  .social-links a {
+    font-size: 0.8rem;
+    padding: 4px;
+  }
+  
+  .copyright {
+    font-size: 0.6rem;
+  }
+}

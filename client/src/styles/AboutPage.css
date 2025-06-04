@@ -1,0 +1,287 @@
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000000;
+  line-height: 1.5;
+  background-color: #ffffff;
+}
+
+.about-hero-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  gap: 20px;
+}
+
+.about-hero-content {
+  flex: 1;
+  min-width: 300px;
+  padding: 0 15px;
+}
+
+.about-hero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+.about-hero-subtitle {
+  font-size: 1rem;
+  color: #000000;
+  margin-bottom: 20px;
+  max-width: 100%;
+}
+
+.about-hero-image {
+  flex: 1;
+  position: relative;
+  min-height: 200px;
+  min-width: 300px;
+}
+
+.about-floating-card {
+  position: absolute;
+  width: 120px;
+  height: 150px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.about-card-1 {
+  top: 0;
+  left: 0;
+  background: #2e7d32;
+  color: #ffffff;
+}
+
+.about-card-2 {
+  top: 20px;
+  left: 140px;
+  background: #000000;
+  color: #ffffff;
+  z-index: 2;
+}
+
+.about-card-3 {
+  top: 0;
+  left: 260px;
+  background: #2e7d32;
+  color: #ffffff;
+}
+
+.about-floating-card:hover {
+  transform: translateY(-5px);
+}
+
+.about-cta-button {
+  background-color: #2e7d32;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.about-cta-button:hover {
+  background-color: #000000;
+  transform: translateY(-2px);
+}
+
+.about-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #000000;
+}
+
+.about-features-section {
+  padding: 40px 0;
+}
+
+.about-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 0 15px;
+}
+
+.about-feature-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  color: #000000;
+}
+
+.about-feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.about-feature-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.about-feature-title {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.about-feature-description {
+  font-size: 0.9rem;
+  color: #000000;
+}
+
+
+.about-how-it-works {
+  padding: 40px 0;
+  background-color: #f1f1f1;
+}
+
+.about-steps-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.about-step {
+  display: flex;
+  margin-bottom: 30px;
+  align-items: flex-start;
+}
+
+.about-step-number {
+  background-color: #2e7d32;
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 15px;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}
+
+.about-step-title {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.about-step-description {
+  font-size: 0.9rem;
+  color: #000000;
+}
+
+
+.about-cta-section {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.about-cta-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.about-cta-subtitle {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+
+@media (max-width: 768px) {
+  .about-hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .about-hero-image {
+    min-height: 180px;
+    margin-top: 30px;
+  }
+  
+  .about-floating-card {
+    width: 100px;
+    height: 130px;
+    font-size: 1.8rem;
+  }
+  
+  .about-card-2 {
+    left: 120px;
+  }
+  
+  .about-card-3 {
+    left: 220px;
+  }
+  
+  .about-features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-step {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .about-step-number {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .about-hero-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .about-hero-image {
+    min-height: 150px;
+  }
+  
+  .about-floating-card {
+    width: 80px;
+    height: 110px;
+    font-size: 1.5rem;
+  }
+  
+  .about-card-2 {
+    left: 100px;
+  }
+  
+  .about-card-3 {
+    left: 180px;
+  }
+  
+  .about-section-title {
+    font-size: 1.3rem;
+  }
+  
+  .about-cta-title {
+    font-size: 1.3rem;
+  }
+}
