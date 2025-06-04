@@ -9,12 +9,14 @@ const generateToken = (userId) => {
 
 const getCookieOptions = (req) => {
     const isLocalhost = req.headers.origin?.includes('localhost');
+    const isRender = req.headers.origin?.includes('onrender.com');
+    
     return {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        secure: true, 
+        sameSite: isLocalhost ? "lax" : "none", 
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        domain: isLocalhost ? undefined : ".yourdomain.com",
+        domain: isLocalhost ? undefined : ".onrender.com", 
         path: "/"
     };
 };
