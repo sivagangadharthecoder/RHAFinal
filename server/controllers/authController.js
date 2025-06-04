@@ -8,7 +8,6 @@ const generateToken = (userId) => {
 };
 
 const getCookieOptions = (req) => {
-    const isLocalhost = req.headers.origin?.includes('localhost');
     const isRender = req.headers.origin?.includes('onrender.com');
     
     return {
