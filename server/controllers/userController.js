@@ -28,3 +28,5 @@ const getUserData = async (req, res) => {
     });
   }
 };
+
+export default getUserData;
