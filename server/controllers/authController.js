@@ -180,7 +180,7 @@ export const login = async (req, res) => {
 
         const user = await userModel.findOne({ rollNumber, email });
         if (!user) {
-            return res.status(400).json({
+            return res.status(401).json({
                 success: false,
                 message: "Invalid credentials"
             });
@@ -188,32 +188,32 @@ export const login = async (req, res) => {
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(400).json({
+            return res.status(401).json({
                 success: false,
                 message: "Invalid credentials"
             });
         }
 
         const token = generateToken(user._id);
-        res.cookie("token", token, getCookieOptions(req));
-
-        return res.json({
-            success: true,
-            message: "Login successful",
-            user: {
-                _id: user._id,
-                name: user.name,
-                email: user.email,
-                rollNumber: user.rollNumber,
-                isAccountVerified: user.isAccountVerified
-            }
-        });
+        
+        res.cookie("token", token, getCookieOptions(req))
+           .json({
+               success: true,
+               message: "Login successful",
+               user: {
+                   _id: user._id,
+                   name: user.name,
+                   email: user.email,
+                   rollNumber: user.rollNumber,
+                   isAccountVerified: user.isAccountVerified
+               }
+           });
 
     } catch (error) {
         console.error("Login error:", error);
         return res.status(500).json({
             success: false,
-            message: error.message
+            message: "Internal server error"
         });
     }
 };
