@@ -8,14 +8,14 @@ const generateToken = (userId) => {
 };
 
 const getCookieOptions = (req) => {
-    const isRender = req.headers.origin?.includes('onrender.com');
+    const isProduction = process.env.NODE_ENV === 'production';
     
     return {
         httpOnly: true,
-        secure: true, 
-        sameSite: "none", 
+        secure: isProduction, 
+        sameSite: isProduction ? 'none' : 'lax',
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        domain: ".onrender.com", 
+        domain: isProduction ? new URL(req.headers.origin).hostname : undefined
     };
 };
 
