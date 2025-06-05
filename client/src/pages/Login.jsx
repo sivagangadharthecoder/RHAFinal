@@ -135,7 +135,7 @@ const Login = () => {
     } catch (error) {
       const errorMessage = error.response?.data?.message || error.message || 'An error occurred';
       addToast(
-        { title: 'Error', body: 'Login Failed !' },
+        { title: 'Error', body: errorMessage },
         'error'
       );
     }
