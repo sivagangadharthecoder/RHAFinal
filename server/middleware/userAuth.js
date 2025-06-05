@@ -2,25 +2,68 @@ import jwt from "jsonwebtoken";
 import userModel from "../models/userModel.js";
 
 const userAuth = async (req, res, next) => {
-  const { token } = req.cookies;
-
-  if (!token) {
-    return res.status(401).json({ success: false, message: "Unauthorized! Login Again!" });
-  }
-
   try {
-    const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await userModel.findById(tokenDecode.id);
-
-    if (!user) {
-      return res.status(401).json({ success: false, message: "User not found!" });
+    // Get token from cookies
+    const { token } = req.cookies;
+    
+    if (!token) {
+      return res.status(401).json({ 
+        success: false, 
+        message: "Authorization token missing. Please login again." 
+      });
     }
 
+    // Verify token
+    const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
+    
+    // Find user without password field
+    const user = await userModel.findById(tokenDecode.id)
+      .select('-password -__v -resetOtp -resetOtpExpireAt -verifyOtp -verifyOtpExpireAt');
+    
+    if (!user) {
+      // Clear invalid token
+      res.clearCookie("token", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        path: "/"
+      });
+      
+      return res.status(401).json({ 
+        success: false, 
+        message: "User not found. Please login again." 
+      });
+    }
+
+    // Attach user to request
     req.user = user;
     req.rollNumber = user.rollNumber;
+    
+    // Continue to next middleware
     next();
   } catch (error) {
-    return res.status(401).json({ success: false, message: error.message });
+    console.error("Authentication error:", error);
+    
+    // Handle specific JWT errors
+    let errorMessage = "Authentication failed";
+    if (error.name === "TokenExpiredError") {
+      errorMessage = "Session expired. Please login again.";
+    } else if (error.name === "JsonWebTokenError") {
+      errorMessage = "Invalid token. Please login again.";
+    }
+    
+    // Clear invalid token
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      path: "/"
+    });
+    
+    return res.status(401).json({ 
+      success: false, 
+      message: errorMessage 
+    });
   }
 };
 
