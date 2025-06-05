@@ -9,13 +9,16 @@ const generateToken = (userId) => {
 
 const getCookieOptions = (req) => {
     const isProduction = process.env.NODE_ENV === 'production';
+    const origin = req.headers.origin;
     
     return {
         httpOnly: true,
         secure: isProduction, 
         sameSite: isProduction ? 'none' : 'lax',
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        domain: isProduction ? new URL(req.headers.origin).hostname : undefined
+        domain: isProduction && origin 
+            ? new URL(origin).hostname.replace('rhff', '.onrender.com')
+            : undefined
     };
 };
 
