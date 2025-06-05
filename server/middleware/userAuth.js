@@ -3,7 +3,6 @@ import userModel from "../models/userModel.js";
 
 const userAuth = async (req, res, next) => {
   try {
-    // Get token from cookies
     const { token } = req.cookies;
     
     if (!token) {
@@ -13,15 +12,12 @@ const userAuth = async (req, res, next) => {
       });
     }
 
-    // Verify token
     const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
     
-    // Find user without password field
     const user = await userModel.findById(tokenDecode.id)
       .select('-password -__v -resetOtp -resetOtpExpireAt -verifyOtp -verifyOtpExpireAt');
     
     if (!user) {
-      // Clear invalid token
       res.clearCookie("token", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
@@ -35,16 +31,13 @@ const userAuth = async (req, res, next) => {
       });
     }
 
-    // Attach user to request
     req.user = user;
     req.rollNumber = user.rollNumber;
     
-    // Continue to next middleware
     next();
   } catch (error) {
     console.error("Authentication error:", error);
     
-    // Handle specific JWT errors
     let errorMessage = "Authentication failed";
     if (error.name === "TokenExpiredError") {
       errorMessage = "Session expired. Please login again.";
@@ -52,7 +45,6 @@ const userAuth = async (req, res, next) => {
       errorMessage = "Invalid token. Please login again.";
     }
     
-    // Clear invalid token
     res.clearCookie("token", {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
