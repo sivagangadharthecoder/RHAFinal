@@ -2,7 +2,6 @@ import userModel from "../models/userModel.js";
 
 const getUserData = async (req, res) => {
   try {
-    // User is already authenticated by middleware, just get fresh data
     const user = await userModel.findById(req.user._id)
       .select('-password -__v -createdAt -updatedAt -resetOtp -resetOtpExpireAt -verifyOtp -verifyOtpExpireAt');
 
